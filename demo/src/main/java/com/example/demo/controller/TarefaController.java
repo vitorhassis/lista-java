@@ -19,7 +19,7 @@ public class TarefaController {
     }
 
     @PostMapping
-    public ResponseEntity<Tarefa> salvar(@RequestBody Tarefa tarefa) {
+    public ResponseEntity<Tarefa> salvarTarefa(@RequestBody Tarefa tarefa) {
         Tarefa request =  service.adicionar(tarefa);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(request.getId())
@@ -28,12 +28,12 @@ public class TarefaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Tarefa>> listar() {
+    public ResponseEntity<List<Tarefa>> listarTarefas() {
         return ResponseEntity.ok(service.listar());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Tarefa> buscarPorId(@PathVariable long id) {
+    public ResponseEntity<Tarefa> buscarTarefaPorId(@PathVariable long id) {
         Optional<Tarefa> tarefa = service.buscarPorId(id);
 
         if(tarefa.isPresent()) {
@@ -44,7 +44,7 @@ public class TarefaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarTarefaPorId(@PathVariable long id) {
         Optional<Tarefa> tarefa = service.buscarPorId(id);
 
         if(tarefa.isEmpty()) {

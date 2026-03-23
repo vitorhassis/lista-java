@@ -19,7 +19,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> criar(Produto produto){
+    public ResponseEntity<Produto> criarProduto(Produto produto){
         Produto request = service.adicionar(produto);
         URI uri;
         uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
@@ -29,13 +29,13 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Produto>> listar(){
+    public ResponseEntity<List<Produto>> listarProdutos(){
         List<Produto> produtos = service.listar();
         return  ResponseEntity.ok().body(produtos);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarPorId(@PathVariable long id){
+    public ResponseEntity<Produto> buscarProdutoPorId(@PathVariable long id){
         var produto = service.buscarPorId(id);
 
         if(produto.isEmpty()) {
@@ -45,7 +45,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarProdutoPorId(@PathVariable long id) {
         Optional<Produto> produto = service.buscarPorId(id);
 
         if(produto.isEmpty()) {

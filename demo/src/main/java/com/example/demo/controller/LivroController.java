@@ -20,7 +20,7 @@ public class LivroController {
     }
 
     @PostMapping
-    public ResponseEntity<Livro> salvar(@RequestBody Livro livro){
+    public ResponseEntity<Livro> salvarLivro(@RequestBody Livro livro){
         Livro request =  service.adicionar(livro);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(request.getId())
@@ -29,13 +29,13 @@ public class LivroController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Livro>> listar(){
+    public ResponseEntity<List<Livro>> listarLivros(){
         List<Livro> livros = service.listar();
         return ResponseEntity.ok(livros);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> buscarPorId(@PathVariable Long id){
+    public ResponseEntity<Object> buscarLivroPorId(@PathVariable Long id){
         Optional<Livro> livro =  service.buscarPorId(id);
 
         if(livro.isEmpty()) {
@@ -45,7 +45,7 @@ public class LivroController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarLivroPorId(@PathVariable long id) {
         Optional<Livro> livro = service.buscarPorId(id);
 
         if(livro.isEmpty()) {

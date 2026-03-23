@@ -21,7 +21,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> salvar(@RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> salvarCliente(@RequestBody Cliente cliente){
         Cliente request =  service.adicionar(cliente);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(request.getId())
@@ -30,13 +30,13 @@ public class ClienteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> listar(){
+    public ResponseEntity<List<Cliente>> listarClientes(){
         List<Cliente> clientes = service.listar();
         return ResponseEntity.ok(clientes);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> buscarPorId(@PathVariable Long id){
+    public ResponseEntity<Object> buscarClientePorId(@PathVariable Long id){
         Optional<Cliente> cliente =  service.buscarPorId(id);
 
         if(cliente.isEmpty()) {
@@ -46,7 +46,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarClientePorId(@PathVariable long id) {
         Optional<Cliente> cliente = service.buscarPorId(id);
 
         if(cliente.isEmpty()) {

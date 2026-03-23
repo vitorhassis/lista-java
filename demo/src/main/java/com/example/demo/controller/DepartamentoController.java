@@ -21,7 +21,7 @@ public class DepartamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<Departamento> salvar(@RequestBody Departamento departamento){
+    public ResponseEntity<Departamento> salvarDepartamento(@RequestBody Departamento departamento){
         Departamento request =  service.adicionar(departamento);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(request.getId())
@@ -30,13 +30,13 @@ public class DepartamentoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Departamento>> listar(){
+    public ResponseEntity<List<Departamento>> listarDepartamentos(){
         List<Departamento> departamentos = service.listar();
         return ResponseEntity.ok(departamentos);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> buscarPorId(@PathVariable Long id){
+    public ResponseEntity<Object> buscarDepartamentoPorId(@PathVariable Long id){
         Optional<Departamento> departamento =  service.buscarPorId(id);
 
         if(departamento.isEmpty()) {
@@ -46,7 +46,7 @@ public class DepartamentoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarDepartamentoPorId(@PathVariable long id) {
         Optional<Departamento> departamento = service.buscarPorId(id);
 
         if(departamento.isEmpty()) {

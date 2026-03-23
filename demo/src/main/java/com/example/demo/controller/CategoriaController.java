@@ -29,12 +29,12 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Categoria>> listar() {
+    public ResponseEntity<List<Categoria>> listarCategorias() {
         return ResponseEntity.ok(service.listar());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categoria> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Categoria> buscarCategoriaPorId(@PathVariable Long id) {
         Optional<Categoria> categoria = service.buscarPorId(id);
 
         if (categoria.isEmpty()) {
@@ -44,7 +44,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarCategoriaPorId(@PathVariable Long id) {
         Optional<Categoria> categoria = service.buscarPorId(id);
 
         if (categoria.isEmpty()) {

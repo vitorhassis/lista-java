@@ -21,7 +21,7 @@ public class FornecedorController {
     }
 
     @PostMapping
-    public ResponseEntity<Fornecedor> salvar(@RequestBody Fornecedor fornecedor){
+    public ResponseEntity<Fornecedor> salvarFornecedor(@RequestBody Fornecedor fornecedor){
         Fornecedor request =  service.adicionar(fornecedor);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(request.getId())
@@ -30,13 +30,13 @@ public class FornecedorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Fornecedor>> listar(){
+    public ResponseEntity<List<Fornecedor>> listarFornecedores(){
         List<Fornecedor> fornecedores = service.listar();
         return ResponseEntity.ok(fornecedores);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> buscarPorId(@PathVariable Long id){
+    public ResponseEntity<Object> buscarFornecedorPorId(@PathVariable Long id){
         Optional<Fornecedor> fornecedor =  service.buscarPorId(id);
 
         if(fornecedor.isEmpty()) {
@@ -46,7 +46,7 @@ public class FornecedorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarFornecedorPorId(@PathVariable long id) {
         Optional<Fornecedor> fornecedor = service.buscarPorId(id);
 
         if(fornecedor.isEmpty()) {

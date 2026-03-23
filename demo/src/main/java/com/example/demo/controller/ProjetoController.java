@@ -21,7 +21,7 @@ public class ProjetoController {
     }
 
     @PostMapping
-    public ResponseEntity<Projeto> salvar(@RequestBody Projeto projeto){
+    public ResponseEntity<Projeto> salvarProjeto(@RequestBody Projeto projeto){
         Projeto request =  service.adicionar(projeto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(request.getId())
@@ -30,13 +30,13 @@ public class ProjetoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Projeto>> listar(){
+    public ResponseEntity<List<Projeto>> listarProjetos(){
         List<Projeto> projetos = service.listar();
         return ResponseEntity.ok(projetos);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> buscarPorId(@PathVariable Long id){
+    public ResponseEntity<Object> buscarProjetoPorId(@PathVariable Long id){
         Optional<Projeto> projeto =  service.buscarPorId(id);
 
         if(projeto.isEmpty()) {
@@ -46,7 +46,7 @@ public class ProjetoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarProjetoPorId(@PathVariable long id) {
         Optional<Projeto> projeto = service.buscarPorId(id);
 
         if(projeto.isEmpty()) {

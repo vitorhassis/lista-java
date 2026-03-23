@@ -20,7 +20,7 @@ public class AutorController {
     }
 
     @PostMapping
-    public ResponseEntity<Autor> salvar(@RequestBody Autor autor) {
+    public ResponseEntity<Autor> salvarAutor(@RequestBody Autor autor) {
         Autor request =  service.adicionar(autor);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(request.getId())
@@ -29,12 +29,12 @@ public class AutorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Autor>> listar() {
+    public ResponseEntity<List<Autor>> listarAutores() {
         return ResponseEntity.ok(service.listar());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Autor> buscarPorId(@PathVariable long id) {
+    public ResponseEntity<Autor> buscarAutorPorId(@PathVariable long id) {
         Optional<Autor> autor = service.buscarPorId(id);
 
         if(autor.isPresent()) {
@@ -45,7 +45,7 @@ public class AutorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarAutorPorId(@PathVariable long id) {
         Optional<Autor> autor = service.buscarPorId(id);
 
         if(autor.isEmpty()) {

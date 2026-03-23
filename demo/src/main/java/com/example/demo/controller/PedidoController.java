@@ -19,7 +19,7 @@ public class PedidoController {
     }
 
     @PostMapping
-    public ResponseEntity<Pedido> criar(@RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> criarPedido(@RequestBody Pedido pedido) {
         Pedido request = service.adicionar(pedido);
         URI uri;
         uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
@@ -29,12 +29,12 @@ public class PedidoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Pedido>> listar() {
+    public ResponseEntity<List<Pedido>> listarPedidos() {
         List<Pedido> pedidos = service.listar();
         return ResponseEntity.ok().body(pedidos);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Pedido> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Pedido> buscarPedidoPorId(@PathVariable Long id) {
         Optional<Pedido> pedido = service.buscarPorId(id);
 
         if(pedido.isEmpty()) {
@@ -44,7 +44,7 @@ public class PedidoController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
+    public ResponseEntity<Void> deletarPedidoPorId(@PathVariable long id) {
         Optional<Pedido> pedido = service.buscarPorId(id);
 
         if(pedido.isEmpty()) {
