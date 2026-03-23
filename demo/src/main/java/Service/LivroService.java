@@ -18,7 +18,7 @@ public class LivroService {
         return repository.save(livro);
     }
 
-    public List<Livro> listar () {
+    public List<Livro> listar() {
         return repository.findAll();
     }
 
