@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/autor")
+@RequestMapping(path = "/autores")
 public class AutorController {
     private final AutorService service;
 
