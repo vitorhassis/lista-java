@@ -1,9 +1,6 @@
 package Service;
 
-import Entity.Categoria;
-import Entity.Departamento;
 import Entity.Tarefa;
-import Repository.CategoriaRepository;
 import Repository.TarefaRepository;
 import org.springframework.stereotype.Service;
 
