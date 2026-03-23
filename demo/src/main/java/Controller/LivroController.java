@@ -48,9 +48,6 @@ public class LivroController {
     public ResponseEntity<Void> deletarPorId(@PathVariable long id) {
         Optional<Livro> livro = service.buscarPorId(id);
 
-        /*como o metodo buscarporid retorna um optional (pode existir ou nao), o '.isEmpty'
-        é usado para verificar se nao ha valor dentro, ou seja, nesse caso, se nao encontrou o livro*/
-
         if(livro.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
