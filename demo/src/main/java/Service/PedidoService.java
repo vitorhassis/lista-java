@@ -2,7 +2,7 @@ package Service;
 
 import Entity.Pedido;
 import Repository.PedidoRepository;
-import Repository.ProdutoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
